@@ -1,0 +1,59 @@
+Here is the table of trials on different invocation of each testcase:
+
+Sample #   | quantumA | quantumB | Preemption | Ready Time Avg | End Time
+--------------------------------------------------------------------------
+1          | 3        | 3        | 0          | 4              | 24
+1          | 3        | 5        | 0          | 4              | 24
+1          | 3        | 10       | 0          | 4              | 24
+1          | 3        | 2        | 1          | 8              | 28
+1          | 3        | 4        | 1          | 2.5            | 21
+1          | 3        | 10       | 1          | 2.5            | 21
+1          | 2        | 3        | 1          | 6.5            | 23
+1          | 5        | 4        | 1          | 2.5            | 21
+1          | 10       | 10       | 1          | 2.5            | 20
+
+2          | 2        | 2        | 1          | 0              | 78
+2          | 5        | 5        | 1          | 0              | 72
+2          | 10       | 10       | 1          | 0              | 70
+
+4          | 3        | 3        | 0          | 3              | 14
+4          | 3        | 5        | 0          | 2.5            | 13
+4          | 3        | 10       | 0          | 2.5            | 13
+4          | 3        | 2        | 1          | 2.5            | 17
+4          | 3        | 4        | 1          | 2              | 14
+4          | 3        | 10       | 1          | 2              | 14
+
+5          | 3        | 3        | 0          | 3.5            | 29
+5          | 3        | 5        | 0          | 4              | 31
+5          | 3        | 10       | 0          | 4              | 31
+5          | 3        | 2        | 1          | 4.5            | 28
+5          | 3        | 4        | 1          | 4.5            | 26
+5          | 3        | 10       | 1          | 1.5            | 25
+5          | 2        | 3        | 1          | 5              | 27
+5          | 5        | 4        | 1          | 4              | 25
+5          | 10       | 10       | 1          | 1.5            | 24
+
+6          | 3        | 3        | 0          | 25.6           | 81
+6          | 3        | 5        | 0          | 21.2           | 81
+6          | 3        | 10       | 0          | 20.4           | 80
+6          | 3        | 2        | 1          | 34.1           | 98
+6          | 3        | 4        | 1          | 24             | 80
+6          | 3        | 10       | 1          | 21.8           | 80
+6          | 2        | 3        | 1          | 25.9           | 88
+6          | 5        | 4        | 1          | 21.6           | 77
+6          | 10       | 10       | 1          | 20.8           | 74
+
+Looking back at the table, I notice that having preemption turned on results in a generally lower 
+Ready Time Avg and lower End Time. Hence, turning preemption on is recommended for this scheduling algorithm.
+
+The fact that processes start out in queueB combine with the results, I can say that varying quantum B will 
+have more impact on the average ready time and run time.
+
+The last thing that I notice is that lower quanta generally results in higher average ready time and higher end time. 
+Hence, it is generally better to have the quanta be as large as possible. 
+Preferably, 
+    the quanta must be higher than the highest instruction count of all processes (e.g. if there are 5 instructions
+        within the biggest process in the input, then the quanta should be 6 or higher),
+    the quanta must be higher than the longest instruction (e.g. if an instruction in the input has the highest burst 
+        time of 20, then the quanta should be 21 or higher).
+
